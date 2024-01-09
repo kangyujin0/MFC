@@ -41,7 +41,7 @@ public:
 	afx_msg void OnBnClickedButtonEnd2();
 };
 
-CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)		// NULL 생성자
+CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)				// NULL 생성자
 {
 }
 
@@ -50,7 +50,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 }
 
-BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)					// 매크로
+BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)						// 매크로
 	ON_BN_CLICKED(IDC_BUTTON_END2, &CAboutDlg::OnBnClickedButtonEnd2)
 END_MESSAGE_MAP()
 
@@ -194,31 +194,31 @@ HCURSOR CmfcMemoDlg::OnQueryDragIcon()
 // MFC를 사용해 Dialog에서 Open 메뉴를 선택시 호출되는 함수
 // 파일을 열고 해당 파일의 내용을 읽어와 Edit Control에 표시
 
-void CmfcMemoDlg::OnMenuOpen()				// File Open Menu 처리기
+void CmfcMemoDlg::OnMenuOpen()						// File Open Menu 처리기
 {
 	char buf[512];
 	CString str;
 
 	char fName[300]="";						// ofn의 filename 저장공간
 	OPENFILENAME ofn;						// 구조체
-	//ZeroMemory(&ofn, sizeof(ofn));		// 메모리 초기화
+	//ZeroMemory(&ofn, sizeof(ofn));				// 메모리 초기화
 	//ZeroMemory(fName, sizeof(fName));
 	memset(&ofn, 0, sizeof(OPENFILENAME));	// ZeroMemory 같은 역할
 
 
 	ofn.lStructSize = sizeof(OPENFILENAME);	// 구조체 크기지정
-	ofn.lpstrFile = fName;					// 선택한 파일의 경로 및 이름을 저장할 버퍼를 지정
+	ofn.lpstrFile = fName;						// 선택한 파일의 경로 및 이름을 저장할 버퍼를 지정
 	ofn.nMaxFile = 100;
 	ofn.lpstrDefExt = "";
 	if (!GetOpenFileName(&ofn)) return;
 	
-	str = buf;								// CString <== Wchar, CString <== char 대입가능
+	str = buf;							// CString <== Wchar, CString <== char 대입가능
 	
 	// C 언어의 표준함수. ANSI encoding
 	if (mEncoding == 0)
 	{
-		FILE* fp = fopen(fName, "rb");		// fopen = C언어 표준함수/CStringA = ANSI(ASCII) 문자열을 다루는 클래스
-		while (fgets(buf, 512, fp))			// 512(최대갯수)만큼 읽어온다, \r\n을 만나면 거기까지 읽는다
+		FILE* fp = fopen(fName, "rb");				// fopen = C언어 표준함수/CStringA = ANSI(ASCII) 문자열을 다루는 클래스
+		while (fgets(buf, 512, fp))				// 512(최대갯수)만큼 읽어온다, \r\n을 만나면 거기까지 읽는다
 		{
 			((CEdit*)GetDlgItem(IDC_EDIT1))->GetWindowText(str);
 			GetDlgItem(IDC_EDIT1)->SetWindowText(str + buf);
@@ -230,9 +230,9 @@ void CmfcMemoDlg::OnMenuOpen()				// File Open Menu 처리기
 	else if (mEncoding == 1)
 	{
 		wchar_t buf1[512];
-		std::locale::global(std::locale(".UTF-8"));	// 전역 로케일을 UTF-8 인코딩으로 설정
+		std::locale::global(std::locale(".UTF-8"));		// 전역 로케일을 UTF-8 인코딩으로 설정
 		std::wifstream ff(fName);
-		//ff.open(fName);							// 지정된 파일을 읽기 위한 wifstream형태의 입력 스트림 ff를 생성
+		//ff.open(fName);					// 지정된 파일을 읽기 위한 wifstream형태의 입력 스트림 ff를 생성
 		for (; ff.getline(buf1, 512);)
 		{
 			str = buf1;
@@ -258,16 +258,16 @@ void CmfcMemoDlg::OnMenuAbout()
 
 void CmfcMemoDlg::OnMenuFind()
 {
-	CmfcFindDlg dlg; 									// dlg객체도 변수이다
-	if (dlg.DoModal() == IDOK)							// FIND 할 문자열 입력
+	CmfcFindDlg dlg; 						// dlg객체도 변수이다
+	if (dlg.DoModal() == IDOK)					// FIND 할 문자열 입력
 	{
 		CString s;
 		mEditMemo.GetWindowText(s);
-		Data = dlg.mStr;								// 입력한 문자열을 다른 윈도우로 가져올 변수에 저장 
-		int start = s.Find(dlg.mStr);					// s에 담긴 문자열의 위치(시작점)를 가져온다
+		Data = dlg.mStr;					// 입력한 문자열을 다른 윈도우로 가져올 변수에 저장 
+		int start = s.Find(dlg.mStr);				// s에 담긴 문자열의 위치(시작점)를 가져온다
 		int end = start + dlg.mStr.GetLength();			// 시작점부터 찾으려는 길이 = 끝점
-		mEditMemo.SetSel(start, end);					// 블록지정
-		start_pos = start + 1;							// 실행 후 다음 찾기를 위해 시작점을 이동한다		
+		mEditMemo.SetSel(start, end);				// 블록지정
+		start_pos = start + 1;					// 실행 후 다음 찾기를 위해 시작점을 이동한다		
 	}
 }
 
@@ -278,13 +278,13 @@ void CmfcMemoDlg::OnMenuFindMore()
 	start_pos = s.Find(Data, start_pos);				// s에 담긴 문자열의 위치를 새 시작점에서 가져온다
 	int end = start_pos + Data.GetLength();
 	mEditMemo.SetSel(start_pos, end);
-	start_pos++;										// 시작점을 계속 바꿔준다
+	start_pos++;							// 시작점을 계속 바꿔준다
 }
 
 void CmfcMemoDlg::OnMenuReplace()
 {
 	CmfcReplace dlg; 							
-	if (dlg.DoModal() == IDOK)							// FIND & REPLACE 할 문자열 입력
+	if (dlg.DoModal() == IDOK)					// FIND & REPLACE 할 문자열 입력
 	{
 		CString s;
 		mEditMemo.GetWindowText(s);
@@ -332,7 +332,7 @@ void CmfcMemoDlg::OnSize(UINT nType, int cx, int cy)	// 사용자영역의 크�
 {
 	CDialogEx::OnSize(nType, cx, cy);
 	int nSBHeight = 30;
-	if (mStatusBar)										// mStatusBar 생성전이면
+	if (mStatusBar)							// mStatusBar 생성전이면
 	{
 		mStatusBar.MoveWindow(0, cy - nSBHeight, cx, nSBHeight);
 	}
