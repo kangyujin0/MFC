@@ -10,7 +10,7 @@ class CmfcReplace : public CDialogEx
 
 public:
 	CString mStrFind, mStrReplace;			// 메시지 전달을 위한 변수
-	CmfcReplace(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	CmfcReplace(CWnd* pParent = nullptr);   	// 표준 생성자입니다.
 	virtual ~CmfcReplace();
 
 // 대화 상자 데이터입니다.
