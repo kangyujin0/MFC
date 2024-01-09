@@ -157,7 +157,7 @@ HCURSOR CMFCTest01Dlg::OnQueryDragIcon()
 }
 
 CString ToUpper(CString s) // 소문자 => 대문자로 xx1x xxxx =>  xx0x xxxx(아스키코드 16진수 참고)
-						   //					1101 1111 DFh
+						 	  // 1101 1111 DFh
 {
 	CString t;
 	for (int i = 0; i < s.GetLength(); i++)	{
@@ -168,7 +168,7 @@ CString ToUpper(CString s) // 소문자 => 대문자로 xx1x xxxx =>  xx0x xxxx(
 	return t;
 }
 CString ToLower(CString s) // 대문자 => 소문자로 xx0x xxxx =>  xx1x xxxx(아스키코드 16진수 참고)
-						   //					0010 0000 20h (|)
+						   	  // 0010 0000 20h (|)
 {
 	CString t;
 	for (int i = 0; i < s.GetLength(); i++) {
