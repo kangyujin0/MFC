@@ -11,10 +11,10 @@
 
 IMPLEMENT_DYNAMIC(CmfcReplace, CDialogEx)
 
-CmfcReplace::CmfcReplace(CWnd* pParent /*=nullptr*/)	// 클래스추가 후 .h에 정의된 컨트롤을 객체화
+CmfcReplace::CmfcReplace(CWnd* pParent /*=nullptr*/)				// 클래스추가 후 .h에 정의된 컨트롤을 객체화
 	: CDialogEx(IDD_REPLACE_DIALOG, pParent)
 {
-	mStrFind = "";										// 생성자
+	mStrFind = "";								// 생성자
 	mStrReplace = "";
 }
 
@@ -47,7 +47,7 @@ END_MESSAGE_MAP()
 // CmfcReplace 메시지 처리기
 
 
-BOOL CmfcReplace::PreTranslateMessage(MSG* pMsg)	// 클래스 마법사 가상함수에서 추가
+BOOL CmfcReplace::PreTranslateMessage(MSG* pMsg)				// 클래스 마법사 가상함수에서 추가
 {
 	switch (pMsg->message)
 	{
@@ -58,9 +58,9 @@ BOOL CmfcReplace::PreTranslateMessage(MSG* pMsg)	// 클래스 마법사 가상�
 			EndDialog(IDCANCEL);					// End창이 닫히고 종료를 준비한다(함수를 나가지 않는다)
 			break;
 		case VK_RETURN:
-			OnBnClickedButtonEnd();										// 함수로 호출
+			OnBnClickedButtonEnd();					// 함수로 호출
 			// 함수 호출로 중복코드 생략
-			//GetDlgItem(IDC_EDIT_FIND1)->GetWindowText(mStrFind);		// mStrFind에 문자열을 저장
+			//GetDlgItem(IDC_EDIT_FIND1)->GetWindowText(mStrFind);	// mStrFind에 문자열을 저장
 			//GetDlgItem(IDC_EDIT_REPLACE1)->GetWindowText(mStrReplace);// mStrReplace에 문자열을 저장
 			//EndDialog(IDOK);
 			break;
