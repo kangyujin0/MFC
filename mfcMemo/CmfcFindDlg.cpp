@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "framework.h"
-#include "mfcMemo.h"									// IDD_FIND_DIALOG Á¤ÀÇ¸¦ Æ÷ÇÔÇÑ Çì´õ
+#include "mfcMemo.h"									// IDD_FIND_DIALOG ì •ì˜ë¥¼ í¬í•¨í•œ í—¤ë”
 #include "mfcMemoDlg.h"
 #include "afxdialogex.h"
 #include "CmfcFindDlg.h"
@@ -8,7 +8,7 @@ BEGIN_MESSAGE_MAP(CmfcFindDlg, CDialogEx)
 	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
-CmfcFindDlg::CmfcFindDlg() : CDialogEx(IDD_FIND_DIALOG)	// °ü·ÊÀû Çü¼ºµÇ´Â »ı¼ºÀÚ
+CmfcFindDlg::CmfcFindDlg() : CDialogEx(IDD_FIND_DIALOG)					// ê´€ë¡€ì  í˜•ì„±ë˜ëŠ” ìƒì„±ì
 {
 }
 
@@ -22,8 +22,8 @@ void CmfcFindDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	switch (nChar)
 	{
-	case VK_RETURN:										// ¹İÈ¯ Çã¿ë falseÀ¸·Î EnterºÒ°¡
-		GetDlgItem(ID_EDIT_FIND)->GetWindowText(mStr);	// ID_EDIT_FIND¿¡ ÀÔ·Â°ªÀ» mStr¿¡ ÀúÀå
+	case VK_RETURN:									// ë°˜í™˜ í—ˆìš© falseìœ¼ë¡œ Enterë¶ˆê°€
+		GetDlgItem(ID_EDIT_FIND)->GetWindowText(mStr);				// ID_EDIT_FINDì— ì…ë ¥ê°’ì„ mStrì— ì €ì¥
 		break;
 	case VK_ESCAPE:
 		mStr = "";
@@ -34,7 +34,7 @@ void CmfcFindDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	CDialogEx::OnKeyDown(nChar, nRepCnt, nFlags);
 }
 
-BOOL CmfcFindDlg::OnInitDialog()	// Dialog ÃÊ±âÈ­ÀÛ¾÷
+BOOL CmfcFindDlg::OnInitDialog()							// Dialog ì´ˆê¸°í™”ì‘ì—…
 {
 
 	CDialogEx::OnInitDialog();
@@ -42,7 +42,7 @@ BOOL CmfcFindDlg::OnInitDialog()	// Dialog ÃÊ±âÈ­ÀÛ¾÷
 	mStr = "";
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// ¿¹¿Ü: OCX ¼Ó¼º ÆäÀÌÁö´Â FALSE¸¦ ¹İÈ¯ÇØ¾ß ÇÕ´Ï´Ù.
+	// ì˜ˆì™¸: OCX ì†ì„± í˜ì´ì§€ëŠ” FALSEë¥¼ ë°˜í™˜í•´ì•¼ í•©ë‹ˆë‹¤.
 }
 
 BOOL CmfcFindDlg::PreTranslateMessage(MSG* pMsg)
@@ -67,5 +67,5 @@ BOOL CmfcFindDlg::PreTranslateMessage(MSG* pMsg)
 		break;
 	}
 
-	return CDialogEx::PreTranslateMessage(pMsg);	// eventÃ³¸® ÈÄ clear
+	return CDialogEx::PreTranslateMessage(pMsg);					// eventì²˜ë¦¬ í›„ clear
 }
