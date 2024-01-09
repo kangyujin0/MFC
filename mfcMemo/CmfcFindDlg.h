@@ -5,9 +5,9 @@ class CmfcFindDlg : public CDialogEx
 public:
     CString mStr;
 
-    CmfcFindDlg();	// »ı¼ºÀÚ
+    CmfcFindDlg();	 // ìƒì„±ì
 
-    // ´ëÈ­ »óÀÚ µ¥ÀÌÅÍÀÔ´Ï´Ù.
+    // ëŒ€í™” ìƒì ë°ì´í„°ì…ë‹ˆë‹¤.
 #ifdef AFX_DESIGN_TIME
     enum { IDD = IDD_ABOUTBOX };
 #endif
